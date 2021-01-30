@@ -44,10 +44,10 @@ Specification of the first check
     [a[0..l-1]], there are no 3 consecutives occurrences of [0]
 *)
 predicate no_3_consecutive_zeros_sub (a:array int) (l:int) =
-  forall i. 0 <= i < l - 2 -> not (a[i] = a[i+1] = a[i+2] = 0)
+  forall i. 0 <= i < __TERM_TO_BE_COMPLETED__ -> not (a[i] = a[i+1] = a[i+2] = 0)
 
 predicate no_3_consecutive_zeros (a:array int) =
-  no_3_consecutive_zeros_sub a a.length
+  no_3_consecutive_zeros_sub a __TERM_TO_BE_COMPLETED__
 
 (**
 
@@ -63,8 +63,8 @@ let no_3_consecutive_zeros_version_1 (a : array int) : bool
   ensures { result = True <-> no_3_consecutive_zeros a }
   =
   try
-    for i=0 to a.length - 3 do
-      invariant {forall j. 0 <= j < i -> not a[j]=a[j+1]=a[j+2]=0}
+    for i= __EXPRESSION_TO_BE_COMPLETED__ to __EXPRESSION_TO_BE_COMPLETED__ do
+      invariant { __FORMULA_TO_BE_COMPLETED__ }
       if a[i] = 0 && a[i+1] = 0 && a[i+2] = 0 then raise TripleFound;
     done;
     True
@@ -86,9 +86,8 @@ let no_3_consecutive_zeros_version_2 (a : array int) : bool
   let ref last2 = a[0] in
   let ref last1 = a[1] in
   try
-    for i=2 to a.length-1 do
-      invariant { last1 = a[i-1] /\ last2 = a[i-2]}
-      invariant { forall j. 0 <= j < i - 2 -> not a[j]=a[j+1]=a[j+2]=0}
+    for i=__EXPRESSION_TO_BE_COMPLETED__ to __EXPRESSION_TO_BE_COMPLETED__ do
+      invariant { __FORMULA_TO_BE_COMPLETED__ }
       let v = a[i] in
       if v = 0 && last1 = 0 && last2 = 0 then raise TripleFound;
       last2 <- last1;
@@ -108,21 +107,16 @@ implementation 3
 *)
 
 
-(* OBS only works with Alt-Ergo *)
+
 let no_3_consecutive_zeros_version_3 (a : array int) : bool
   ensures { result = True <-> no_3_consecutive_zeros a }
   =
   let ref count_zeros = 0 in
   try
-    for i=0 to a.length - 1 do
-      invariant { 2 >= count_zeros >= 0 } (* range of the variable *)
-      invariant { count_zeros = 0 -> (i = 0 \/ (not a[i-1] = 0))}
-      invariant { count_zeros = 1 -> (a[i-1] = 0 /\ i >= 1 /\ (not a[i-2] = 0 \/ i = 1)) }
-      invariant { count_zeros = 2 -> (a[i-1] = a[i-2] = 0 /\ i >= 2/\ (not a[i-3] = 0 \/ i = 2)) }
-      invariant { forall j. 3 <= j <= i  -> not a[j-1] = a[j-2] = a[j-3] = 0}
+    for i=__EXPRESSION_TO_BE_COMPLETED__ to __EXPRESSION_TO_BE_COMPLETED__ do
+      invariant { __FORMULA_TO_BE_COMPLETED__ }
       if a[i] = 0 then
-        if count_zeros = 2 then
-	raise TripleFound
+        if count_zeros = 2 then raise TripleFound
         else count_zeros <- count_zeros + 1
       else count_zeros <- 0
     done;
