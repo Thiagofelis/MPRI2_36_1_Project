@@ -500,25 +500,21 @@ predicate rule_1_for_cell (g:takuzu_grid) (n:int) =
     satisfied for the row and the column of the cell number `n` *)
   let cs = column_start_index n in
   let rs = row_start_index n in
-  rule_1_for_chunk g cs 8 /\ rule_1_for_chunk g rs 1
-
+  __FORMULA_TO_BE_COMPLETED__
 
 predicate rule_2_for_cell (g:takuzu_grid) (n:int) =
 (** `rule_2_for_cell g n` is true whenever the second Takuzu rule is
     satisfied for the row and the column of the cell number `n` *)
   let cs = column_start_index n in
   let rs = row_start_index n in
-  rule_1_for_chunk g cs 8 /\ rule_1_for_chunk g rs 1
-  
+  __FORMULA_TO_BE_COMPLETED__
 
 predicate rule_3_for_cell (g:takuzu_grid) (n:int) =
 (** `rule_3_for_cell g n` is true whenever the third Takuzu rule is
     satisfied for the row and the column of the cell number `n` *)
   let cs = column_start_index n in
   let rs = row_start_index n in
-  forall i. 0 <= i < 8 ->
-  	 (i = cs \/ not identical_columns g cs i)
-	 /\ ((8 * i) = rs \/ not identical_rows g rs (i*8) )
+  forall i. 0 <= i < 8 -> __FORMULA_TO_BE_COMPLETED__
 
 predicate valid_for_cell (g:takuzu_grid) (i:int) =
 (** `valid_for_cell g n` is true whenever cell number `n` satisfy the
@@ -537,7 +533,7 @@ predicate valid_up_to (g:takuzu_grid) (n:int)
 let check_at_cell (g:takuzu_grid) (n:int) : unit
 (** `check_at_cell g n` returns normally if the grid `g` satisfy the
     rules for cell `n`. *)
-  requires { g.length = 64 /\ 0 <= n < 64 }
+  requires { __FORMULA_TO_BE_COMPLETED__ }
   ensures { valid_for_cell g n }
   raises { Invalid -> true }
 =
@@ -553,27 +549,7 @@ let check_at_cell (g:takuzu_grid) (n:int) : unit
 
 (** {4 QUESTIONS 18, 19 AND 20} *)
 
-(* lemma needed to prove the next one. needs Alt-ergo normally *)
-let rec lemma framing_assert_1 (g : takuzu_grid) (n k : int) (e1 e2 : elem)
-    requires { 0 <= n <= g.length }
-    variant { k }
-    requires { 0 <= n <= g.length /\ 0 <= k <= g.length}
-    ensures  {forall i. 0 <= i <= k -> g[n<-e1][n<-e2][i] = g[n<-e2][i]}
-    =
-    if k = 0 then () else framing_assert_1 g n (k-1) e1 e2
 
-
-(* lemma needed to prove the assert of check_cell_change *)
-(* i have no idea why this cannot be proved automatically, it should be a direct consequence of framing_assert_1 *)
-let lemma framing_assert_2 (g : takuzu_grid) (n : int) (e1 e2 : elem)
-     requires { 0 <= n <= g.length }
-     ensures { (g[n<-e1][n<-e2]) = (g[n<-e2]) }
-= framing_assert_1 g n g.length e1 e2
-
-(* lemma needed to prove pos condition of check_cell_change *)
-lemma framing_pos : forall g : takuzu_grid, n : int.
-      g.length = 64 -> 0 <= n < 64 ->
-      valid_up_to (g[n<-Empty]) n -> valid_for_cell g n -> valid_up_to g (n+1)
 
 let check_cell_change (g:takuzu_grid) (n:int) (e:elem) : unit
 (** `check_cell_change g n e` takes a grid `g` that satisfies the
@@ -583,31 +559,27 @@ let check_cell_change (g:takuzu_grid) (n:int) (e:elem) : unit
     any check fails. It should be used incrementally, as it assumes
     that the rules are already satisfied for cell whose number is
     strictly smaller than `n`. *)
-  requires { g.length = 64 /\ 0 <= n < 64 }
+  requires { __FORMULA_TO_BE_COMPLETED__ }
   requires { valid_up_to (g[n<-Empty]) n }
   writes { g }
   ensures { valid_up_to g (n+1) }
-  
-  (* whatever it happens, we will have (old g)[n<-e] = g *)
-  (* needed to prove solve_aux *)
-  ensures { (old g)[n<-e] = g }
-  raises { Invalid -> (old g)[n<-e] = g }
+  raises { Invalid -> true }
 =
   g[n] <- e;
   assert { valid_up_to g[n<-Empty] n };
   check_at_cell g n
 
 
+
+
+
+
 (** {3 The main algorithm} *)
 
-(** {4 QUESTION 21} *)
-
-  
 predicate full_up_to (g:takuzu_grid) (n:int)
 (** `full_up_to g n` is true whenever all the cells lower than `n` are
     non-empty *)
 = forall k. 0 <= k < n -> g[k] <> Empty
-
 
 predicate extends (g1:takuzu_grid) (g2:takuzu_grid)
 (** `extends g1 g2` is true when `g2` is an extension of `g1`, that is
@@ -615,26 +587,22 @@ predicate extends (g1:takuzu_grid) (g2:takuzu_grid)
     same value. *)
 = forall k. 0 <= k < 64 -> g1[k] <> Empty -> g2[k] = g1[k]
 
+
+(** {4 QUESTION 21} *)
+
+
+
+
 exception SolutionFound
 
-(* needed to prove solve_aux, proof is hard *)
-lemma valid_preserved : forall g : takuzu_grid, n : int.
-      0 <= n < 64 -> valid_up_to g n -> valid_up_to (g[n<-Empty]) n
-
-(* needed to prove solve_aux *)
-(* i don't understand why it is not proven automatically *)
-lemma framing_last : forall g : takuzu_grid, n : int, e1 e2 e3 : elem.
-      g.length = 64 -> 0 <= n < 64 -> g[n] = e1 ->
-      g[n<-e2][n<-e3][n<-e1] = g
 
 let rec solve_aux (g:takuzu_grid) (n:int) : unit
-  requires { g.length = 64 }
-  requires { 0 <= n <= 64}
+  requires { __FORMULA_TO_BE_COMPLETED__ }
   requires { full_up_to g n }
   requires { valid_up_to g n }
   writes { g }
-  variant { 64 - n }
-  ensures { g = (old g) }
+  variant { __VARIANT_TO_BE_COMPLETED__ }
+  ensures { __FORMULA_TO_BE_COMPLETED__ }
   raises { SolutionFound -> extends (old g) g /\ full_up_to g 64 /\ valid_up_to g 64 }
 =
   if n=64 then raise SolutionFound;

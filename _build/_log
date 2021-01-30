@@ -1,0 +1,16 @@
+### Starting build.
+# Target: test_takuzu.ml.depends, tags: { extension:ml, file:test_takuzu.ml, ocaml, ocamldep, quiet }
+/home/thiago/.opam/default/bin/ocamldep.opt -modules test_takuzu.ml > test_takuzu.ml.depends
+# Target: takuzu.ml.depends, tags: { extension:ml, file:takuzu.ml, ocaml, ocamldep, quiet }
+/home/thiago/.opam/default/bin/ocamldep.opt -modules takuzu.ml > takuzu.ml.depends
+# Target: takuzu.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:takuzu.cmo, file:takuzu.ml, implem, ocaml, quiet }
+/home/thiago/.opam/default/bin/ocamlc.opt -c -I /home/thiago/.opam/default/lib/ocaml -I /home/thiago/.opam/default/lib/zarith -o takuzu.cmo takuzu.ml
+# Target: test_takuzu.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:test_takuzu.cmo, file:test_takuzu.ml, implem, ocaml, quiet }
+/home/thiago/.opam/default/bin/ocamlc.opt -c -I /home/thiago/.opam/default/lib/ocaml -I /home/thiago/.opam/default/lib/zarith -o test_takuzu.cmo test_takuzu.ml
+# Target: takuzu.cmx, tags: { compile, extension:cmx, extension:ml, file:takuzu.cmx, file:takuzu.ml, implem, native, ocaml, quiet }
+/home/thiago/.opam/default/bin/ocamlopt.opt -c -I /home/thiago/.opam/default/lib/ocaml -I /home/thiago/.opam/default/lib/zarith -o takuzu.cmx takuzu.ml
+# Target: test_takuzu.cmx, tags: { compile, extension:cmx, extension:ml, file:test_takuzu.cmx, file:test_takuzu.ml, implem, native, ocaml, quiet }
+/home/thiago/.opam/default/bin/ocamlopt.opt -c -I /home/thiago/.opam/default/lib/ocaml -I /home/thiago/.opam/default/lib/zarith -o test_takuzu.cmx test_takuzu.ml
+# Target: test_takuzu.native, tags: { dont_link_with, extension:native, file:test_takuzu.native, link, native, ocaml, program, quiet }
+/home/thiago/.opam/default/bin/ocamlopt.opt -I /home/thiago/.opam/default/lib/ocaml -I /home/thiago/.opam/default/lib/zarith /home/thiago/.opam/default/lib/ocaml/unix.cmxa /home/thiago/.opam/default/lib/zarith/zarith.cmxa takuzu.cmx test_takuzu.cmx -o test_takuzu.native
+# Compilation successful.
