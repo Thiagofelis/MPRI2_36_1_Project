@@ -508,7 +508,7 @@ predicate rule_2_for_cell (g:takuzu_grid) (n:int) =
     satisfied for the row and the column of the cell number `n` *)
   let cs = column_start_index n in
   let rs = row_start_index n in
-  rule_1_for_chunk g cs 8 /\ rule_1_for_chunk g rs 1
+  rule_2_for_chunk g cs 8 /\ rule_2_for_chunk g rs 1
   
 
 predicate rule_3_for_cell (g:takuzu_grid) (n:int) =
@@ -553,22 +553,11 @@ let check_at_cell (g:takuzu_grid) (n:int) : unit
 
 (** {4 QUESTIONS 18, 19 AND 20} *)
 
-(* lemma needed to prove the next one. needs Alt-ergo normally *)
-let rec lemma framing_assert_1 (g : takuzu_grid) (n k : int) (e1 e2 : elem)
-    requires { 0 <= n <= g.length }
-    variant { k }
-    requires { 0 <= n <= g.length /\ 0 <= k <= g.length}
-    ensures  {forall i. 0 <= i <= k -> g[n<-e1][n<-e2][i] = g[n<-e2][i]}
-    =
-    if k = 0 then () else framing_assert_1 g n (k-1) e1 e2
 
 
 (* lemma needed to prove the assert of check_cell_change *)
-(* i have no idea why this cannot be proved automatically, it should be a direct consequence of framing_assert_1 *)
-let lemma framing_assert_2 (g : takuzu_grid) (n : int) (e1 e2 : elem)
-     requires { 0 <= n <= g.length }
-     ensures { (g[n<-e1][n<-e2]) = (g[n<-e2]) }
-= framing_assert_1 g n g.length e1 e2
+lemma framing_assert : forall g : takuzu_grid, n : int, e1 : elem, e2 : elem.
+      0 <= n < g.length -> (g[n<-e1][n<-e2]) = (g[n<-e2])
 
 (* lemma needed to prove pos condition of check_cell_change *)
 lemma framing_pos : forall g : takuzu_grid, n : int.
@@ -623,7 +612,7 @@ lemma valid_preserved : forall g : takuzu_grid, n : int.
 
 (* needed to prove solve_aux *)
 (* i don't understand why it is not proven automatically *)
-lemma framing_last : forall g : takuzu_grid, n : int, e1 e2 e3 : elem.
+   lemma framing_last : forall g : takuzu_grid, n : int, e1 e2 e3 : elem.
       g.length = 64 -> 0 <= n < 64 -> g[n] = e1 ->
       g[n<-e2][n<-e3][n<-e1] = g
 

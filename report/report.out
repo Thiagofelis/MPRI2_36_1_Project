@@ -1,3 +1,13 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.2}{Basic Functions on Arrays}{}% 2
 \BOOKMARK [2][-]{subsection.2.1}{Check for Consecutive Zeros}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Checking for Same Number of Zeros and Ones}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Checking for identical sub-arrays}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{Specification of Takuzu puzzles}{}% 6
+\BOOKMARK [2][-]{subsection.3.1}{The Main Search Algorithm}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.2}{First Takuzu Rules for Chunks}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.3}{Second Takuzu Rule for Chunks}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.4}{Third Takuzu Rule for Chunks}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.5}{Checking Rules Satisfaction for a Given Cell}{section.3}% 11
+\BOOKMARK [1][-]{section.4}{Extra Questions}{}% 12
+\BOOKMARK [1][-]{section.5}{Conclusion}{}% 13

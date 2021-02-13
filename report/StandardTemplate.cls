@@ -1,6 +1,6 @@
 \ProvidesClass{StandardTemplate}
 
-\LoadClass[12pt]{article}
+\LoadClass[11pt]{article}
 
 
 
