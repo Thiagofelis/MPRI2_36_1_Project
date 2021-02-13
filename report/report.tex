@@ -131,7 +131,7 @@ The case for checking the rows is virtually identical to the previous one, with 
 \subsection{Checking Rules Satisfaction for a Given Cell}
 \label{subsec:gc}
 
-\textbf{16)} The predicate valid\_for\_cell should be valid for a certain $ i $ when its corresponding row and column satisfy all the rules. The predicates rule\_1\_for\_cell and rule\_2\_for\_cell with $ n $ are valid whenever the row and column chunk corresponding to $ n $ verifies the rule. Thus, they are simply (and respectively) given by \[
+\textbf{16)} The predicate valid\_for\_cell should be valid for a certain $ i $ when its corresponding row and column satisfy all the rules. The predicates rule\_1\_for\_cell and rule\_2\_for\_cell with $ n $ are valid whenever the row and column chunk corresponding to $ n $ verifies these rules. Thus, they are simply (and respectively) given by \[
 rule\_1\_for\_chunk~g~cs~8 \land rule\_1\_for\_chunk~g~rs~1
 \]and \[
 rule\_2\_for\_chunk~g~cs~8 \land rule\_2\_for\_chunk~g~rs~1
@@ -141,7 +141,7 @@ rule\_2\_for\_chunk~g~cs~8 \land rule\_2\_for\_chunk~g~rs~1
 
 \textbf{17)} The function check\_at\_cell is almost complete, we only add the pre-conditions that the game board should be of right size and that the cell's index should be inside the board. If any of the check rule functions that we have already implemented and proved raises an exception, then it will propagate to this function, which will also raise an exception. On the other hand, if all the functions successfully terminate, then we will get all their post-conditions, which directly implies valid\_for\_cell g n.
 
-\textbf{18)} For the pre-condition, as usual we require the game board to be o the right size and furthermore that the cell's index in inside the game board. This proves that the index $ n $ is inside the array's bounds, and thus also that the call to function check\_at\_cell is a valid one. The exceptional post-conditional is trivially true.
+\textbf{18)} For the pre-condition, as usual we require the game board to be o the right size and furthermore the cell's index to be inside the game board. This proves that the index $ n $ is inside the array's bounds, and thus also that the call to function check\_at\_cell is a valid one. The exceptional post-conditional is trivially true.
 
 Showing the assertion is non-trivial, because we would need a framing lemma to now that the predicate $ valid\_up\_to~g[n\leftarrow  Empty]~n $ is preserved at the assignment. The same is true for the post-condition, as even though we intuitively know that by adding a correct element at position $ n $ we cannot alter the correctness of previous positions, this statement also needs a framing lemma which is non-trivial.
 
@@ -153,18 +153,18 @@ which states that if $ n $ is an index inside the game board, then first setting
 
 \textbf{20)} To prove the post-condition we need the framing lemma
 \begin{align*}
-framing\_pos : &\forall g : takuzu\_grid, n : \mathbb{N}.~g.length = 64 \to 0 \leq n < 64\\ &valid\_up\_to~(g[n \leftarrow Empty])~n \to valid\_to\_cell~g~n \to valid\_up\_to~g~(n+1)
+framing\_pos : &\forall g : takuzu\_grid, n : \mathbb{N}.~g.length = 64 \to 0 \leq n < 64\\ &valid\_up\_to~(g[n \leftarrow Empty])~n \to valid\_for\_cell~g~n \to valid\_up\_to~g~(n+1)
 \end{align*}
 which states that if the game board is of the right size and $ n $ is an index inside the game board, then if by setting $ n $ to empty in $ g $ we get a valid board up to $ n $\footnote{Remember that valid up to $ n $ means the first $ n $ positions starting from $ 0 $, so it does not include n.} , and if the cell at position $ n $ in $ g $ is valid, then the game board is valid up to $ n+1 $. To see why this lemma is true we assume all its hypothesis and we analyze all the three rules. 
 \begin{enumerate}
-\item Rule 1 : If $ valid\_to\_cell~g~n $ is valid, then the row and the column containing cell $ n $ must not have three consecutive non-empty elements, and thus they satisfy rule 1. All the other rows and columns are left unchanged, so if they satisfied rule 1 before they must still satisfy it.
-\item Rule 2 : If $ valid\_to\_cell~g~n $ is valid, then the number of zeros and ones in the row and column containing cell $ n $ must be less then $ 4 $, and thus they satisfy rule 2. All the other rows and columns are left unchanged, so if they satisfied rule 2 before they must still satisfy it.
-\item Rule 3 : If $ valid\_to\_cell~g~n $ is valid, then the row and the column containing cell $ n $ must be either non-full or different from the other rows and columns, respectively. Thus they satisfy rule 3. All the other rows (and columns) are left unchanged, so if they were mutually different before, and as they are different from the row (and column) containing cell $ n $, then the must stay mutually different.
+\item Rule 1 : If $ valid\_for\_cell~g~n $ is valid, then the row and the column containing cell $ n $ must not have three consecutive non-empty elements, and thus they satisfy rule 1. All the other rows and columns are left unchanged, so if they satisfied rule 1 before they must still satisfy it.
+\item Rule 2 : If $ valid\_for\_cell~g~n $ is valid, then the number of zeros and ones in the row and column containing cell $ n $ must be less then $ 4 $, and thus they satisfy rule 2. All the other rows and columns are left unchanged, so if they satisfied rule 2 before they must still satisfy it.
+\item Rule 3 : If $ valid\_for\_cell~g~n $ is valid, then the row and the column containing cell $ n $ must be either non-full or different from the other rows and columns, respectively. Thus they satisfy rule 3. All the other rows (and columns) are left unchanged, so if they were mutually different before, and as they are different from the row (and column) containing cell $ n $, then the must stay mutually different.
 \end{enumerate}
 
 \textbf{21)} In order to prove the main algorithm, we first note that function solve is already proven true by the pre and post-conditions of function solve\_aux, and thus we are left to prove the latter. 
 
-We start with the new pre-conditions we add, which are that the game board is of right size and that $ n $ should be in $0,..,64 $. Note that, even thought in all previous functions we asked $ n $ to be in $ 0,..,63 $ -- as $ 64 $ would be out of the game board -- here the condition $ n=64 $ means the algorithm has finished, and thus this must be accepted by the pre-condition. We also remark that those new pre-conditions are implied by the ones of solve, so the function solve is still automatically proven correct.
+We start with the new pre-conditions we add, which are that the game board is of right size and that $ n $ should be in $0,..,64 $. Note that, even thought in all previous functions we asked $ n $ to be in $ 0,..,63 $ -- as $ 64 $ would be out of the game board -- here the condition $ n=64 $ means the algorithm has finished, and thus this must be included in the pre-condition. We also remark that those new pre-conditions are implied by the ones of solve, so the function solve is still automatically proven correct.
 
 For the variant, we claim we can use $ 64 - n $. Indeed, as the recursive calls are all done with a greater $ n $, and its value is upper bounded by $ 64 $, then $ n - 64 $ is both non-negative and decreasing through the recursive calls. The new post-condition $ g= old~g $ will be explained in the following.
 
@@ -176,7 +176,7 @@ As we have $  valid\_up\_to~g~n $ by the pre-condition of function solve\_aux, w
 valid\_preserved : \forall g : takuzu\_grid, n : int.~0 \leq n < 64 \to valid\_up\_to~n \to valid\_up\_to~g[n \leftarrow Empty]~n
 \,.\] The reason this lemma must be true is because by setting a cell to empty in a game board that was valid until position $ n $ we cannot create a violation of any of the rules before this position.
 
-The call to function check\_at\_cell can either raise Invalid, and then we jump to a second call to check\_at\_cell, or can return normally. Assuming it returns normally, we then have a recursive call $solve\_aux~g~(n+1)$, whose pre-conditions we have to prove. The pre-condition $ g.length=64 $ is obviously true, whereas the pre-condition $ 0 \leq n \leq 64 $ is proven from the fact that this part of the code is accessible for only $ 0 \leq n < 64 $. The pre-condition $ valid\_up\_to~g~(n+1) $ is given by the post-condition of the call to function check\_at\_cell.
+The call to function check\_at\_cell can either raise Invalid, and then we jump to a second call to check\_at\_cell, or can return normally. Assuming it returns normally, we then have a recursive call $solve\_aux~g~(n+1)$, whose pre-conditions we have to prove. The pre-condition $ g.length=64 $ is obviously true, whereas the pre-condition $ 0 \leq n+1 \leq 64 $ is proven from the fact that this part of the code is accessible for only $ 0 \leq n < 64 $. The pre-condition $ valid\_up\_to~g~(n+1) $ is given by the post-condition of the call to function check\_at\_cell.
 
 The pre-condition $ full\_up\_to~g~(n+1) $ is not proven by default, and to prove it we need to add to function check\_cell\_change the post-condition $ (old~g)[n\leftarrow e] = g $ --- which is obviously true because it describes the change of the state of $ g $ in function check\_at\_cell. Using this new post-condition, we are able to link the state of $ g $ before and after the function call, so we can use the pre-condition $ full\_up\_to~g~n $, which we had at the beginning of the call of solve\_aux, to prove $ full\_up\_to~g~(n+1)$. Indeed, as $ (old~g)[n \leftarrow Zero] = g $, and $ old~g $ is full up to $ n $, we get that $ g $ is full up to $ n + 1$. 
 
@@ -218,7 +218,7 @@ An important point is also that when we do a call of the algorithm on a board $ 
 \section{Conclusion}
 \label{sec:conc}
 
-In this project I successfully proved all the functions that compose the takuzu solving algorithm. The steps were explained in detail in this document and all the lemmas left unproven were shown to hold in this document. I will then take the rest of this conclusion to make personal comments on the difficulties that I faced throughout the process.
+In this project I successfully proved all the functions that compose the takuzu solving algorithm. The steps were explained in detail  and all the lemmas left unproven were shown to hold in this document. I will then take the rest of this conclusion to make personal comments on the difficulties that I faced throughout the process.
 
 Firstly, all the questions up to $ 20 $ were relatively easy. This part of the project was by far the fastest to do, and the only function that took me some more time was no\_3\_consecutive\_zeros\_version\_3, to which I had to add a consider amount of loop invariants in order for me to be able to prove it. Those invariants were then readily generalized to prove check\_rule\_1\_for\_chunk, which would have been much harder to prove if I had not proved no\_3\_consecutive\_zeros\_version\_3 before. The questions $18$ to $ 20$, in which I had to prove check\_cell\_change, were also a bit harder.
 

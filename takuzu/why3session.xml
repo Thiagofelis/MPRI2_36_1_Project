@@ -7,10 +7,10 @@
 <path name=".."/><path name="takuzu.mlw"/>
 <theory name="Appetizers" proved="true">
  <goal name="no_3_consecutive_zeros_version_1&#39;vc" expl="VC for no_3_consecutive_zeros_version_1" proved="true">
- <proof prover="0"><result status="valid" time="0.05" steps="239"/></proof>
+ <proof prover="0"><result status="valid" time="0.04" steps="239"/></proof>
  </goal>
  <goal name="no_3_consecutive_zeros_version_2&#39;vc" expl="VC for no_3_consecutive_zeros_version_2" proved="true">
- <proof prover="0"><result status="valid" time="0.29" steps="663"/></proof>
+ <proof prover="0"><result status="valid" time="0.25" steps="663"/></proof>
  </goal>
  <goal name="no_3_consecutive_zeros_version_3&#39;vc" expl="VC for no_3_consecutive_zeros_version_3" proved="true">
  <proof prover="0"><result status="valid" time="0.13" steps="331"/></proof>
@@ -25,12 +25,12 @@
  <proof prover="0"><result status="valid" time="0.00" steps="0"/></proof>
  </goal>
  <goal name="check_identical_sub_arrays&#39;vc" expl="VC for check_identical_sub_arrays" proved="true">
- <proof prover="0"><result status="valid" time="0.02" steps="92"/></proof>
+ <proof prover="0"><result status="valid" time="0.01" steps="92"/></proof>
  </goal>
 </theory>
 <theory name="Takuzu">
  <goal name="eq&#39;vc" expl="VC for eq" proved="true">
- <proof prover="0"><result status="valid" time="0.01" steps="7"/></proof>
+ <proof prover="0"><result status="valid" time="0.00" steps="7"/></proof>
  </goal>
  <goal name="column_start_index&#39;vc" expl="VC for column_start_index" proved="true">
  <proof prover="0"><result status="valid" time="0.00" steps="0"/></proof>
@@ -39,13 +39,13 @@
  <proof prover="0"><result status="valid" time="0.00" steps="0"/></proof>
  </goal>
  <goal name="valid_chunk" proved="true">
- <proof prover="0"><result status="valid" time="0.00" steps="13"/></proof>
+ <proof prover="0"><result status="valid" time="0.01" steps="13"/></proof>
  </goal>
  <goal name="acc&#39;vc" expl="VC for acc" proved="true">
  <proof prover="0"><result status="valid" time="0.01" steps="36"/></proof>
  </goal>
  <goal name="check_rule_1_for_chunk&#39;vc" expl="VC for check_rule_1_for_chunk" proved="true">
- <proof prover="0"><result status="valid" time="18.33" steps="5935"/></proof>
+ <proof prover="0"><result status="valid" time="11.59" steps="5935"/></proof>
  </goal>
  <goal name="num_occ&#39;vc" expl="VC for num_occ" proved="true">
  <proof prover="0"><result status="valid" time="0.01" steps="14"/></proof>
@@ -57,16 +57,16 @@
  <proof prover="0"><result status="valid" time="0.01" steps="10"/></proof>
  </goal>
  <goal name="check_identical_chunks&#39;vc" expl="VC for check_identical_chunks" proved="true">
- <proof prover="0"><result status="valid" time="0.21" steps="384"/></proof>
+ <proof prover="0"><result status="valid" time="0.19" steps="384"/></proof>
  </goal>
  <goal name="check_rule_3_for_column&#39;vc" expl="VC for check_rule_3_for_column" proved="true">
- <proof prover="0"><result status="valid" time="0.02" steps="114"/></proof>
+ <proof prover="0"><result status="valid" time="0.01" steps="114"/></proof>
  </goal>
  <goal name="check_rule_3_for_row&#39;vc" expl="VC for check_rule_3_for_row" proved="true">
- <proof prover="0"><result status="valid" time="0.09" steps="236"/></proof>
+ <proof prover="0"><result status="valid" time="0.08" steps="236"/></proof>
  </goal>
  <goal name="check_at_cell&#39;vc" expl="VC for check_at_cell" proved="true">
- <proof prover="0"><result status="valid" time="0.13" steps="255"/></proof>
+ <proof prover="0"><result status="valid" time="0.12" steps="255"/></proof>
  </goal>
  <goal name="framing_assert">
  <proof prover="0"><result status="timeout" time="60.00"/></proof>
@@ -75,7 +75,7 @@
  <proof prover="0"><result status="timeout" time="60.00"/></proof>
  </goal>
  <goal name="check_cell_change&#39;vc" expl="VC for check_cell_change" proved="true">
- <proof prover="0"><result status="valid" time="0.02" steps="26"/></proof>
+ <proof prover="0"><result status="valid" time="0.01" steps="26"/></proof>
  </goal>
  <goal name="valid_preserved">
  <proof prover="0"><result status="timeout" time="60.00"/></proof>
@@ -84,16 +84,16 @@
  <proof prover="0"><result status="timeout" time="60.00"/></proof>
  </goal>
  <goal name="solve_aux&#39;vc" expl="VC for solve_aux" proved="true">
- <proof prover="0"><result status="failure" time="0.00"/></proof>
+ <proof prover="0"><result status="timeout" time="60.00"/></proof>
  <transf name="split_vc" proved="true" >
   <goal name="solve_aux&#39;vc.0" expl="exceptional postcondition" proved="true">
   <proof prover="0"><result status="valid" time="0.01" steps="14"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.1" expl="index in array bounds" proved="true">
-  <proof prover="0"><result status="valid" time="0.00" steps="12"/></proof>
+  <proof prover="0"><result status="valid" time="0.01" steps="12"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.2" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.01" steps="14"/></proof>
+  <proof prover="0"><result status="valid" time="0.00" steps="14"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.3" expl="variant decrease" proved="true">
   <proof prover="0"><result status="valid" time="0.01" steps="16"/></proof>
@@ -102,40 +102,40 @@
   <proof prover="0"><result status="valid" time="0.01" steps="16"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.5" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.01" steps="16"/></proof>
+  <proof prover="0"><result status="valid" time="0.00" steps="16"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.6" expl="precondition" proved="true">
   <proof prover="0"><result status="valid" time="0.01" steps="41"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.7" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.02" steps="45"/></proof>
+  <proof prover="0"><result status="valid" time="0.01" steps="45"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.8" expl="postcondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.01" steps="20"/></proof>
+  <proof prover="0"><result status="valid" time="0.00" steps="20"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.9" expl="exceptional postcondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.01" steps="24"/></proof>
+  <proof prover="0"><result status="valid" time="0.00" steps="24"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.10" expl="postcondition" proved="true">
   <proof prover="0"><result status="valid" time="0.01" steps="14"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.11" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.00" steps="14"/></proof>
+  <proof prover="0"><result status="valid" time="0.01" steps="14"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.12" expl="variant decrease" proved="true">
   <proof prover="0"><result status="valid" time="0.01" steps="16"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.13" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.01" steps="16"/></proof>
+  <proof prover="0"><result status="valid" time="0.00" steps="16"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.14" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.00" steps="16"/></proof>
+  <proof prover="0"><result status="valid" time="0.01" steps="16"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.15" expl="precondition" proved="true">
   <proof prover="0"><result status="valid" time="0.01" steps="41"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.16" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.02" steps="45"/></proof>
+  <proof prover="0"><result status="valid" time="0.01" steps="45"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.17" expl="postcondition" proved="true">
   <proof prover="0"><result status="valid" time="0.01" steps="20"/></proof>
@@ -150,10 +150,10 @@
   <proof prover="0"><result status="valid" time="0.01" steps="14"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.21" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.00" steps="17"/></proof>
+  <proof prover="0"><result status="valid" time="0.01" steps="17"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.22" expl="variant decrease" proved="true">
-  <proof prover="0"><result status="valid" time="0.00" steps="20"/></proof>
+  <proof prover="0"><result status="valid" time="0.01" steps="20"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.23" expl="precondition" proved="true">
   <proof prover="0"><result status="valid" time="0.01" steps="20"/></proof>
@@ -162,7 +162,7 @@
   <proof prover="0"><result status="valid" time="0.01" steps="21"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.25" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.02" steps="55"/></proof>
+  <proof prover="0"><result status="valid" time="0.01" steps="55"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.26" expl="precondition" proved="true">
   <proof prover="0"><result status="valid" time="0.01" steps="25"/></proof>
@@ -177,16 +177,16 @@
   <proof prover="0"><result status="valid" time="0.01" steps="30"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.30" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.00" steps="30"/></proof>
+  <proof prover="0"><result status="valid" time="0.01" steps="30"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.31" expl="precondition" proved="true">
   <proof prover="0"><result status="valid" time="0.01" steps="31"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.32" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.15" steps="393"/></proof>
+  <proof prover="0"><result status="valid" time="0.18" steps="393"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.33" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.00" steps="35"/></proof>
+  <proof prover="0"><result status="valid" time="0.01" steps="35"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.34" expl="index in array bounds" proved="true">
   <proof prover="0"><result status="valid" time="0.01" steps="34"/></proof>
@@ -204,10 +204,10 @@
   <proof prover="0"><result status="valid" time="0.01" steps="36"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.39" expl="exceptional postcondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.02" steps="75"/></proof>
+  <proof prover="0"><result status="valid" time="0.01" steps="75"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.40" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.01" steps="18"/></proof>
+  <proof prover="0"><result status="valid" time="0.00" steps="18"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.41" expl="precondition" proved="true">
   <proof prover="0"><result status="valid" time="0.01" steps="47"/></proof>
@@ -222,10 +222,10 @@
   <proof prover="0"><result status="valid" time="0.01" steps="25"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.45" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.15" steps="385"/></proof>
+  <proof prover="0"><result status="valid" time="0.18" steps="385"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.46" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.00" steps="29"/></proof>
+  <proof prover="0"><result status="valid" time="0.01" steps="29"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.47" expl="index in array bounds" proved="true">
   <proof prover="0"><result status="valid" time="0.01" steps="28"/></proof>
@@ -234,7 +234,7 @@
   <proof prover="0"><result status="valid" time="0.01" steps="36"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.49" expl="exceptional postcondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.07" steps="289"/></proof>
+  <proof prover="0"><result status="valid" time="0.08" steps="289"/></proof>
   </goal>
   <goal name="solve_aux&#39;vc.50" expl="index in array bounds" proved="true">
   <proof prover="0"><result status="valid" time="0.01" steps="22"/></proof>
@@ -250,25 +250,25 @@
 </theory>
 <theory name="Test" proved="true">
  <goal name="empty&#39;vc" expl="VC for empty" proved="true">
- <proof prover="0"><result status="valid" time="0.01" steps="0"/></proof>
+ <proof prover="0"><result status="valid" time="0.00" steps="0"/></proof>
  </goal>
  <goal name="example1&#39;vc" expl="VC for example1" proved="true">
- <proof prover="0"><result status="valid" time="0.08" steps="66"/></proof>
+ <proof prover="0"><result status="valid" time="0.05" steps="66"/></proof>
  </goal>
  <goal name="example2&#39;vc" expl="VC for example2" proved="true">
- <proof prover="0"><result status="valid" time="0.06" steps="62"/></proof>
+ <proof prover="0"><result status="valid" time="0.05" steps="62"/></proof>
  </goal>
  <goal name="example3&#39;vc" expl="VC for example3" proved="true">
- <proof prover="0"><result status="valid" time="0.06" steps="62"/></proof>
+ <proof prover="0"><result status="valid" time="0.05" steps="62"/></proof>
  </goal>
  <goal name="example4&#39;vc" expl="VC for example4" proved="true">
- <proof prover="0"><result status="valid" time="0.06" steps="66"/></proof>
+ <proof prover="0"><result status="valid" time="0.05" steps="66"/></proof>
  </goal>
  <goal name="example5&#39;vc" expl="VC for example5" proved="true">
- <proof prover="0"><result status="valid" time="0.04" steps="50"/></proof>
+ <proof prover="0"><result status="valid" time="0.03" steps="50"/></proof>
  </goal>
  <goal name="example6&#39;vc" expl="VC for example6" proved="true">
- <proof prover="0"><result status="valid" time="0.06" steps="62"/></proof>
+ <proof prover="0"><result status="valid" time="0.04" steps="62"/></proof>
  </goal>
 </theory>
 </file>
